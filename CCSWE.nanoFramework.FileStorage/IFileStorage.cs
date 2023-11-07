@@ -27,17 +27,37 @@ namespace CCSWE.nanoFramework.FileStorage
         string[] GetFiles(string path);
 
         /// <summary>
+        /// Opens an existing file for reading.
+        /// </summary>
+        /// <param name="path">The file to be opened for reading.</param>
+        /// <returns>A <see cref="FileStream"/> on the specified path.</returns>
+        FileStream OpenRead(string path);
+
+        /// <summary>
         /// Opens an existing UTF-8 encoded text file for reading.
         /// </summary>
         /// <param name="path">The file to be opened for reading.</param>
         /// <returns>A <see cref="StreamReader"/> on the specified path.</returns>
         StreamReader OpenText(string path);
-        
+
+        /// <summary>
+        /// Opens a binary file, reads the contents of the file into a byte array, and then closes the file.
+        /// </summary>
+        /// <param name="path">The file to open for reading.</param>
+        byte[] ReadAllBytes(string path);
+
         /// <summary>
         /// Opens a text file, reads all the text in the file, and then closes the file.
         /// </summary>
         /// <param name="path">The file to open for reading.</param>
         string ReadAllText(string path);
+
+        /// <summary>
+        /// Creates a new file, writes the specified byte array to the file, and then closes the file. If the target file already exists, it is overwritten.
+        /// </summary>
+        /// <param name="path">The file to write to.</param>
+        /// <param name="bytes">The bytes to write to the file.</param>
+        void WriteAllBytes(string path, byte[] bytes);
 
         /// <summary>
         /// Creates a new file, writes the specified string to the file, and then closes the file. If the target file already exists, it is overwritten.
