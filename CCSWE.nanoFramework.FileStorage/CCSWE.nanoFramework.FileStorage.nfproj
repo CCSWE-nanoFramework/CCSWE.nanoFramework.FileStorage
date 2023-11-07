@@ -28,7 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.2\lib\mscorlib.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.20\lib\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="nanoFramework.DependencyInjection">
       <HintPath>..\packages\nanoFramework.DependencyInjection.1.1.1\lib\nanoFramework.DependencyInjection.dll</HintPath>
@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.lock.json" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>
