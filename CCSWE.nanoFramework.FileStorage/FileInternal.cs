@@ -6,7 +6,7 @@ namespace CCSWE.nanoFramework.FileStorage
 {
     internal static class FileInternal
     {
-        private const int ChunkSize = 8192;
+        private const int ChunkSize = 2048;// 8192;
         internal static readonly byte[] EmptyBytes = new byte[0];
 
         /// <summary>
