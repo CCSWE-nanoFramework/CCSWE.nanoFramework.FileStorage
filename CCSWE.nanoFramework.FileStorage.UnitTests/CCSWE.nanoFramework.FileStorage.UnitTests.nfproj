@@ -28,7 +28,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BootstrapperTests.cs" />
+    <Compile Include="FileInternalTests.cs" />
     <Compile Include="FileStorageTests.cs" />
+    <Compile Include="FileTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

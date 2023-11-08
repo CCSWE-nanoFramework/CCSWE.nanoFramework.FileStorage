@@ -24,6 +24,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="FileStorage.cs" />
     <Compile Include="IFileStorage.cs" />
+    <Compile Include="FileInternal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

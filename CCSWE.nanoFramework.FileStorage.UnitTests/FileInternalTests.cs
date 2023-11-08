@@ -1,22 +1,18 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using nanoFramework.TestFramework;
 
 namespace CCSWE.nanoFramework.FileStorage.UnitTests
 {
     [TestClass]
-    public class FileStorageTests: FileTests
+    public class FileInternalTests: FileTests
     {
         [TestMethod]
         public void FileExists_should_return_false_if_file_does_not_exists()
         {
             ExecuteFileTest(() =>
             {
-                var sut = new FileStorage();
-                var actual = sut.FileExists(TestFile);
-
-                Assert.IsFalse(actual);
+                Assert.IsFalse(FileInternal.Exists(TestFile));
             });
         }
 
@@ -27,34 +23,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
             {
                 CreateTextFile();
 
-                var sut = new FileStorage();
-                var actual = sut.FileExists(TestFile);
-
-                Assert.IsTrue(actual);
-            });
-        }
-
-        [TestMethod]
-        public void GetDirectories_should_return_directories()
-        {
-            var sut = new FileStorage();
-            var actual = sut.GetDirectories(TestDrive);
-
-            Assert.IsNotNull(actual);
-        }
-
-        [TestMethod]
-        public void GetFiles_should_return_files()
-        {
-            ExecuteFileTest(() =>
-            {
-                CreateTextFile();
-
-                var sut = new FileStorage();
-                var actual = sut.GetFiles(TestDrive);
-
-                Assert.IsNotNull(actual);
-                Assert.IsTrue(actual.Length > 0);
+                Assert.IsTrue(FileInternal.Exists(TestFile));
             });
         }
 
@@ -65,8 +34,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
             {
                 CreateBinaryFile();
 
-                var sut = new FileStorage();
-                using var actual = sut.OpenRead(TestFile);
+                using var actual = FileInternal.OpenRead(TestFile);
 
                 AssertBinaryContentEquals(BinaryContent, actual);
             });
@@ -77,9 +45,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
         {
             ExecuteFileTest(() =>
             {
-                var sut = new FileStorage();
-
-                Assert.ThrowsException(typeof(IOException), () => { sut.OpenRead(TestFile); });
+                Assert.ThrowsException(typeof(IOException), () => { FileInternal.OpenRead(TestFile); });
             });
         }
 
@@ -90,8 +56,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
             {
                 CreateTextFile();
 
-                var sut = new FileStorage();
-                using var actual = sut.OpenText(TestFile);
+                using var actual = FileInternal.OpenText(TestFile);
 
                 AssertTextContentEquals(TextContent, actual);
             });
@@ -102,21 +67,19 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
         {
             ExecuteFileTest(() =>
             {
-                var sut = new FileStorage();
-
-                Assert.ThrowsException(typeof(IOException), () => { sut.OpenText(TestFile); });
+                Assert.ThrowsException(typeof(IOException), () => { FileInternal.OpenText(TestFile); });
             });
         }
 
         [TestMethod]
         public void ReadAllBytes_should_read_all_content_from_file()
         {
+            // TODO Implement
             ExecuteFileTest(() =>
             {
                 CreateBinaryFile();
 
-                var sut = new FileStorage();
-                var actual = sut.ReadAllBytes(TestFile);
+                var actual = FileInternal.ReadAllBytes(TestFile);
 
                 AssertBinaryContentEquals(actual);
             });
@@ -127,9 +90,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
         {
             ExecuteFileTest(() =>
             {
-                var sut = new FileStorage();
-
-                Assert.ThrowsException(typeof(IOException), () => { sut.ReadAllBytes(TestFile); });
+                Assert.ThrowsException(typeof(IOException), () => { FileInternal.ReadAllBytes(TestFile); });
             });
         }
 
@@ -140,8 +101,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
             {
                 CreateTextFile();
 
-                var sut = new FileStorage();
-                var actual = sut.ReadAllText(TestFile);
+                var actual = FileInternal.ReadAllText(TestFile);
 
                 Assert.AreEqual(TextContent, actual);
             });
@@ -152,9 +112,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
         {
             ExecuteFileTest(() =>
             {
-                var sut = new FileStorage();
-
-                Assert.ThrowsException(typeof(IOException), () => { sut.ReadAllText(TestFile); });
+                Assert.ThrowsException(typeof(IOException), () => { FileInternal.ReadAllText(TestFile); });
             });
         }
 
@@ -163,8 +121,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
         {
             ExecuteFileTest(() =>
             {
-                var sut = new FileStorage();
-                sut.WriteAllBytes(TestFile, FileInternal.EmptyBytes);
+                FileInternal.WriteAllBytes(TestFile, FileInternal.EmptyBytes);
 
                 AssertFileExists();
             });
@@ -179,9 +136,8 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
 
                 var content = nameof(FileStorageTests);
                 var bytes = Encoding.UTF8.GetBytes(content);
-                var sut = new FileStorage();
 
-                sut.WriteAllBytes(TestFile, bytes);
+                FileInternal.WriteAllBytes(TestFile, bytes);
 
                 AssertBinaryContentEquals(bytes);
             });
@@ -193,9 +149,8 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
             ExecuteFileTest(() =>
             {
                 var content = nameof(FileStorageTests);
-                var sut = new FileStorage();
 
-                sut.WriteAllText(TestFile, content);
+                FileInternal.WriteAllText(TestFile, content);
 
                 AssertFileExists();
             });
@@ -209,12 +164,12 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
                 CreateTextFile();
 
                 var content = nameof(FileStorageTests);
-                var sut = new FileStorage();
 
-                sut.WriteAllText(TestFile, content);
+                FileInternal.WriteAllText(TestFile, content);
 
                 AssertTextContentEquals(content);
             });
         }
+
     }
 }

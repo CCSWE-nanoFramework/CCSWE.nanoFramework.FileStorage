@@ -19,4 +19,5 @@ using System.Runtime.InteropServices;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
+[assembly: InternalsVisibleTo("CCSWE.nanoFramework.Configuration")]
 [assembly: InternalsVisibleTo("NFUnitTest")]
