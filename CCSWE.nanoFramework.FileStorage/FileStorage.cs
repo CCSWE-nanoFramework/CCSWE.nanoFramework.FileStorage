@@ -8,6 +8,12 @@ namespace CCSWE.nanoFramework.FileStorage
     internal class FileStorage: IFileStorage
     {
         /// <inheritdoc />
+        public FileStream Create(string path) => File.Create(path);
+
+        /// <inheritdoc />
+        public void Delete(string path) => File.Delete(path);
+
+        /// <inheritdoc />
         public bool Exists(string path) => File.Exists(path);
 
         /// <inheritdoc />
@@ -17,24 +23,24 @@ namespace CCSWE.nanoFramework.FileStorage
         public string[] GetFiles(string path) => Directory.GetFiles(path);
 
         /// <inheritdoc />
-        public FileStream OpenRead(string path) => FileInternal.OpenRead(path);
+        public FileStream OpenRead(string path) => File.OpenRead(path);
 
         /// <inheritdoc />
-        public StreamReader OpenText(string path) => FileInternal.OpenText(path);
+        public StreamReader OpenText(string path) => File.OpenText(path);
 
         /// <inheritdoc />
-        public FileStream OpenWrite(string path) => FileInternal.OpenWrite(path);
+        public FileStream OpenWrite(string path) => File.OpenWrite(path);
 
         /// <inheritdoc />
-        public byte[] ReadAllBytes(string path) => FileInternal.ReadAllBytes(path);
+        public byte[] ReadAllBytes(string path) => File.ReadAllBytes(path);
 
         /// <inheritdoc />
-        public string ReadAllText(string path) => FileInternal.ReadAllText(path);
+        public string ReadAllText(string path) => File.ReadAllText(path);
 
         /// <inheritdoc />
-        public void WriteAllBytes(string path, byte[] bytes) => FileInternal.WriteAllBytes(path, bytes);
+        public void WriteAllBytes(string path, byte[] bytes) => File.WriteAllBytes(path, bytes);
 
         /// <inheritdoc />
-        public void WriteAllText(string path, string? contents) => FileInternal.WriteAllText(path, contents);
+        public void WriteAllText(string path, string? contents) => File.WriteAllText(path, contents);
     }
 }
