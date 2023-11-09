@@ -9,26 +9,26 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
     public class FileStorageTests: FileTests
     {
         [TestMethod]
-        public void FileExists_should_return_false_if_file_does_not_exists()
+        public void Exists_should_return_false_if_file_does_not_exists()
         {
             ExecuteFileTest(() =>
             {
                 var sut = new FileStorage();
-                var actual = sut.FileExists(TestFile);
+                var actual = sut.Exists(TestFile);
 
                 Assert.IsFalse(actual);
             });
         }
 
         [TestMethod]
-        public void FileExists_should_return_true_if_file_exists()
+        public void Exists_should_return_true_if_file_exists()
         {
             ExecuteFileTest(() =>
             {
                 CreateTextFile();
 
                 var sut = new FileStorage();
-                var actual = sut.FileExists(TestFile);
+                var actual = sut.Exists(TestFile);
 
                 Assert.IsTrue(actual);
             });

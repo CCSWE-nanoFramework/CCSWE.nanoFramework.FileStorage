@@ -31,6 +31,12 @@ namespace CCSWE.nanoFramework.FileStorage
         public static StreamReader OpenText(string path) => new(new FileStream(path, FileMode.Open, FileAccess.Read));
 
         /// <summary>
+        /// Opens an existing file or creates a new file for writing.
+        /// </summary>
+        /// <param name="path">The file to be opened for writing.</param>
+        public static FileStream OpenWrite(string path) => new(path, FileMode.OpenOrCreate, FileAccess.Write);
+
+        /// <summary>
         /// Opens a binary file, reads the contents of the file into a byte array, and then closes the file.
         /// </summary>
         /// <param name="path">The file to open for reading.</param>

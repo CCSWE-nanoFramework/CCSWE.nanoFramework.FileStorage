@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using nanoFramework.TestFramework;
 
@@ -8,7 +9,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
     public class FileInternalTests: FileTests
     {
         [TestMethod]
-        public void FileExists_should_return_false_if_file_does_not_exists()
+        public void Exists_should_return_false_if_file_does_not_exists()
         {
             ExecuteFileTest(() =>
             {
@@ -17,7 +18,7 @@ namespace CCSWE.nanoFramework.FileStorage.UnitTests
         }
 
         [TestMethod]
-        public void FileExists_should_return_true_if_file_exists()
+        public void Exists_should_return_true_if_file_exists()
         {
             ExecuteFileTest(() =>
             {
