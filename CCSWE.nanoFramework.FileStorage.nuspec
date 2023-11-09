@@ -17,10 +17,10 @@
     <copyright>Copyright (c) Cory Charlton</copyright>
     <tags>nanoFramework C# csharp netmf netnf ccswe file io</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.14.20" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.14.2" />
       <dependency id="nanoFramework.DependencyInjection" version="1.1.1" />
       <dependency id="nanoFramework.Runtime.Events" version="1.11.6" />
-      <dependency id="nanoFramework.System.IO.FileSystem" version="1.1.23" />
+      <dependency id="nanoFramework.System.IO.FileSystem" version="1.1.28" />
       <dependency id="nanoFramework.System.IO.Streams" version="1.1.38" />
       <dependency id="nanoFramework.System.Text" version="1.2.37" />
     </dependencies>
