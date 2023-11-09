@@ -7,6 +7,16 @@ namespace CCSWE.nanoFramework.FileStorage
     /// </summary>
     public interface IFileStorage
     {
+        /// <summary>Creates or overwrites a file in the specified path.</summary>
+        /// <param name="path">The path and name of the file to create.</param>
+        FileStream Create(string path);
+
+        /// <summary>Deletes the specified file.</summary>
+        /// <param name="path">The name of the file to be deleted. Wildcard characters are not supported.</param>
+        /// <exception cref="T:System.ArgumentException"><paramref name="path" /> is <see langword="null" /> or empty.</exception>
+        /// <exception cref="T:System.IO.IOException"><paramref name="path" /> is read-only or a directory.</exception>
+        void Delete(string path);
+
         /// <summary>
         /// Determines whether the specified file exists.
         /// </summary>
@@ -40,6 +50,10 @@ namespace CCSWE.nanoFramework.FileStorage
         /// <returns>A <see cref="StreamReader"/> on the specified path.</returns>
         StreamReader OpenText(string path);
 
+        /// <summary>
+        /// Opens an existing file or creates a new file for writing.
+        /// </summary>
+        /// <param name="path">The file to be opened for writing.</param>
         FileStream OpenWrite(string path);
 
         /// <summary>
