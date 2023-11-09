@@ -12,7 +12,7 @@ namespace CCSWE.nanoFramework.FileStorage
         /// </summary>
         /// <param name="path">The file to check.</param>
         /// <returns><c>true</c> if the file exists; otherwise <c>false</c>.</returns>
-        bool FileExists(string path);
+        bool Exists(string path);
 
         /// <summary>
         /// Returns the names of subdirectories (including their paths) in the specified directory.
@@ -39,6 +39,8 @@ namespace CCSWE.nanoFramework.FileStorage
         /// <param name="path">The file to be opened for reading.</param>
         /// <returns>A <see cref="StreamReader"/> on the specified path.</returns>
         StreamReader OpenText(string path);
+
+        FileStream OpenWrite(string path);
 
         /// <summary>
         /// Opens a binary file, reads the contents of the file into a byte array, and then closes the file.

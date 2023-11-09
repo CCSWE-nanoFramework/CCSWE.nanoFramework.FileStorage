@@ -8,7 +8,7 @@ namespace CCSWE.nanoFramework.FileStorage
     internal class FileStorage: IFileStorage
     {
         /// <inheritdoc />
-        public bool FileExists(string path) => File.Exists(path);
+        public bool Exists(string path) => File.Exists(path);
 
         /// <inheritdoc />
         public string[] GetDirectories(string path) => Directory.GetDirectories(path);
@@ -21,6 +21,9 @@ namespace CCSWE.nanoFramework.FileStorage
 
         /// <inheritdoc />
         public StreamReader OpenText(string path) => FileInternal.OpenText(path);
+
+        /// <inheritdoc />
+        public FileStream OpenWrite(string path) => FileInternal.OpenWrite(path);
 
         /// <inheritdoc />
         public byte[] ReadAllBytes(string path) => FileInternal.ReadAllBytes(path);
